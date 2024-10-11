@@ -5,6 +5,7 @@ import connectCloudinary from './config/cloudinary.js';
 import connectDB from './config/db.js';
 import userRouter from './routes/userRoute.js';
 import productRouter from './routes/productRoute.js';
+import cartRouter from './routes/cartRoute.js';
 
 
 //App Config
@@ -25,6 +26,9 @@ app.use('/api/user', userRouter)
 
 //productController
 app.use('/api/product', productRouter)
+
+// cartController
+app.use('/api/cart', cartRouter)
 
 
 

@@ -1,23 +1,27 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { assets } from "../../../frontend/src/assets/assets";
+import { assets } from './../assests/assets';
 
 const Sidebar = () => {
   return (
     <div className="w-[18%] min-h-screen overflow-hidden border-r-2">
-      <div className="w-[20rem] pt-10 pl-5 flex flex-col gap-5">
-        <NavLink className="flex items-center gap-5 border-2 p-2" to="/add">
-          <img className="w-5 h-5" src={assets.cross_icon} alt="add icon" />
-          <p>Add Items</p>
+      <div className="flex flex-col gap-4 pt-6 pl-[20%] text-[15px]">
+
+        <NavLink className="flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l" to="/add">
+          <img className="w-5 h-5" src={assets.add_icon} alt="add icon" />
+          <p className="hidden md:block">Add Items</p>
         </NavLink>
+
         <NavLink className="flex items-center gap-5 border-2 p-2" to="/list">
-          <img className="w-5 h-5" src={assets.cross_icon} alt="add icon" />
+          <img className="w-5 h-5" src={assets.order_icon} alt="add icon" />
           <p>List Items</p>
         </NavLink>
+
         <NavLink className="flex items-center gap-5 border-2 p-2" to="/orders">
-          <img className="w-5 h-5" src={assets.cross_icon} alt="add icon" />
+          <img className="w-5 h-5" src={assets.order_icon} alt="add icon" />
           <p>Orders</p>
         </NavLink>
+
       </div>
     </div>
   );
