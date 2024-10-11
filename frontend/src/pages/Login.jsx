@@ -19,7 +19,7 @@ const Login = () => {
                 {
                     currentState === 'Login'
                         ?
-                        <p onClick={() => setCurrentState('Sign Up')} className='cursor-pointer'>Crete Account</p>
+                        <p onClick={() => setCurrentState('Sign Up')} className='cursor-pointer'>Create Account</p>
                         : <p onClick={() => setCurrentState('Login')} className='cursor-pointer'>Login here!</p>
                 }
             </div>
