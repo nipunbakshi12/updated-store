@@ -18,7 +18,7 @@ const BestSeller = () => {
                     It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
                 </p>
             </div>
-            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6 '>
                 {
                     bestSeller.map((item, index) => (
                         <ProductItem
@@ -29,7 +29,7 @@ const BestSeller = () => {
                             price={item.price}
                         />
                     ))
-                }
+                }   
             </div>
         </div>
     )
