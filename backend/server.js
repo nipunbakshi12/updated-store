@@ -6,6 +6,7 @@ import connectDB from './config/db.js';
 import userRouter from './routes/userRoute.js';
 import productRouter from './routes/productRoute.js';
 import cartRouter from './routes/cartRoute.js';
+import orderRouter from './routes/orderRoute.js';
 
 
 //App Config
@@ -29,6 +30,9 @@ app.use('/api/product', productRouter)
 
 // cartController
 app.use('/api/cart', cartRouter)
+
+//orderController
+app.use('/api/order', orderRouter)
 
 
 

@@ -138,7 +138,7 @@ const ShopContextProvider = (props) => {
     useEffect(() => {
         if (!token && localStorage.getItem('token')) {
             setToken(localStorage.getItem('token'))
-            getUserCart()
+            getUserCart(localStorage.getItem('token'))
         }
     }, [])
 
@@ -146,10 +146,10 @@ const ShopContextProvider = (props) => {
         products, currency, delivery_fee,
         search, setSearch,
         showSearch, setShowSearch,
-        cartItems, addToCart, getCartCount,
+        cartItems, setCartItems, addToCart, getCartCount,
         updateQuantity, getCartAmount,
         navigate, backendUrl, getProductsData,
-        setToken, token
+        setToken, token,
     }
     return (
         <ShopContext.Provider value={value}>
