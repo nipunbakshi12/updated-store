@@ -7,9 +7,10 @@ const Footer = () => {
             <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm'>
 
                 <div>
-                    <img src={assets.logo} className='mb-5 w-32' />
+                    <img src={assets.logo2} className='mb-5 w-32' alt='Logo' />
                     <p className='w-full md:w-2/3 text-gray-600'>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                        At Ship Shop Store, we’re dedicated to providing you with the freshest groceries and an effortless shopping experience. Shop online and get your groceries delivered to your door.
+
                     </p>
                 </div>
 

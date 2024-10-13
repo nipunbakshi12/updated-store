@@ -6,8 +6,9 @@ import { ShopContext } from '../context/ShopContext'
 import axios from 'axios'
 
 const PlaceOrder = () => {
-    const [method, setMethod] = useState('cod')
+    const [method, setMethod] = useState('razorpay')
     const { navigate, backendUrl, token, cartItems, setCartItems, getCartAmount, delivery_fee, products } = useContext(ShopContext)
+    const [isDisabled, setIsDisabled] = useState(true);
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -146,18 +147,25 @@ const PlaceOrder = () => {
                 <div className='mt-12'>
                     <Title text1={'PAYMENT'} text2={' METHOD'} />
                     {/* ------------------------PAYMENT METHODS--------------------------- */}
-                    <div className='flex gap-3 flex-col lg:flex-row'>
+                    <div className='flex gap-3 flex-col lg:flex-row items-center justify-center'>
                         <div className='flex items-center gap-3 border p-2 px-3 cursor-pointer' onClick={() => setMethod('razorpay')}>
                             <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'razorpay' ? 'bg-green-400' : ''}`}></p>
                             <img src={assets.razorpay_logo} className='h-5 mx-4' />
                         </div>
-                        <div className='flex items-center gap-3 border p-2 px-3 cursor-pointer' onClick={() => setMethod('cod')}>
+                        {/* <div className='flex items-center gap-3 border p-2 px-3 cursor-pointer' onClick={() => setMethod('cod')}>
                             <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'cod' ? 'bg-green-400' : ''}`}></p>
                             <p className='text-gray-500 text-sm font-medium mx-4'>CASH ON DELIVERY</p>
-                        </div>
+                        </div> */}
+                        {/* <div
+                            className={`flex items-center gap-3 border p-2 px-3 cursor-pointer ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            onClick={() => !isDisabled && setMethod('cod')}
+                        >
+                            <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'cod' ? 'bg-green-400' : ''}`}></p>
+                            <p className='text-gray-500 text-sm font-medium mx-4'>CASH ON DELIVERY</p>
+                        </div> */}
                     </div>
                     <div className='w-full text-end mt-8'>
-                        <button className='bg-black text-white px-16 py-3 text-sm'>PLACE ORDER</button>
+                        <button className='bg-black text-white px-40 py-3 text-sm'>PLACE ORDER</button>
                     </div>
                 </div>
             </div>

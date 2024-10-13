@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 import { assets } from '../assets/assets'
 import RelatedProducts from '../components/RelatedProducts'
+import "./product.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Product = () => {
     const { productId } = useParams()
@@ -11,6 +14,7 @@ const Product = () => {
     const [productData, setProductData] = useState(false)
     const [image, setImage] = useState('')
     const [size, setSize] = useState('')
+    const [isAnimating, setIsAnimating] = useState(false);
 
     const fetchProductData = async () => {
         products.map((item) => {
@@ -22,6 +26,23 @@ const Product = () => {
             }
         })
     }
+
+    const handleAddToCart = () => {
+        if (!size) {
+            toast.error("Please select a size");
+            return;
+        }
+
+        setIsAnimating(true);
+        addToCart(productData._id, size);
+
+        // Set a timeout to remove the animation class after the animation completes
+        setTimeout(() => {
+            setIsAnimating(false);
+        }, 1000);
+    };
+
+
     useEffect(() => {
         fetchProductData()
     }, [productId, products])
@@ -51,7 +72,7 @@ const Product = () => {
                         <img src={assets.star_icon} className='w-3 5' />
                         <img src={assets.star_icon} className='w-3 5' />
                         <img src={assets.star_dull_icon} className='w-3 5' />
-                        <p className='pl-2'>(122)</p>
+                        {/* <p className='pl-2'>(122)</p> */}
                     </div>
                     <p className='mt-5 text-3xl font-medium'>{currency}{productData.price}</p>
                     <p className='mt-5 text-gray-500 md:w-4/5'>{productData.description}</p>
@@ -63,11 +84,22 @@ const Product = () => {
                             ))}
                         </div>
                     </div>
-                    <button className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700' onClick={() => addToCart(productData._id, size)}>ADD TO CART</button>
+                    {/* <button className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700' onClick={() => addToCart(productData._id, size)}>ADD TO CART</button> */}
+
+                    {isAnimating && (
+                        <img src={image} className="image-fly" alt="Flying product" />
+                    )}
+
+                    <button
+                        className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+                        onClick={handleAddToCart}
+                    >
+                        ADD TO CART
+                    </button>
+
                     <hr className='mt-8 sm:w-4/5' />
                     <div className='text-sm texxt-gray-500 mt-5 flex flex-col gap-1'>
                         <p>100% Original Product</p>
-                        <p>Cash on Delivery is available</p>
                         <p>Easy return and exchange policy</p>
                     </div>
                 </div>
@@ -77,7 +109,7 @@ const Product = () => {
             <div className='mt-20'>
                 <div className='flex'>
                     <b className='border px-5 py-3 text-sm'>Description</b>
-                    <p className='border px-5 py-3 text-sm'>Reviews(122)</p>
+                    <p className='border px-5 py-3 text-sm'>Reviews</p>
                 </div>
                 <div className='flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500'>
                     <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>

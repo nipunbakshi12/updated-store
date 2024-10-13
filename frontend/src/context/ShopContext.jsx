@@ -39,6 +39,8 @@ const ShopContextProvider = (props) => {
         }
         setCartItems(cartData)
 
+        // toast.success("Product added to cart!");
+
         if (token) {
             try {
                 await axios.post(backendUrl + '/api/cart/add', { itemId, size }, { headers: { token } })
@@ -50,6 +52,7 @@ const ShopContextProvider = (props) => {
 
     }
 
+    //Prizes ka karna hai
     const getCartCount = () => {
         let totalCount = 0
         for (const items in cartItems) {
@@ -59,7 +62,8 @@ const ShopContextProvider = (props) => {
                         totalCount += cartItems[items][item]
                     }
                 } catch (error) {
-
+                    console.log(error)
+                    toast.error('Error calculating cart count')
                 }
             }
         }
@@ -88,6 +92,7 @@ const ShopContextProvider = (props) => {
         let totalAmount = 0
         for (const items in cartItems) {
             let itemInfo = products.find((product) => product._id === items)
+            console.log(itemInfo, "ITEM INFO")
             for (const item in cartItems[items]) {
                 try {
                     if (cartItems[items][item] > 0) {

@@ -100,7 +100,7 @@ const Add = ({ token }) => {
 
       <div className='flex flex-col sm:flex-row gap-2 w-full sm:gap-8'>
 
-        <div>
+        {/* <div>
           <p className='mb-2'>Product Category</p>
           <select onChange={(e) => setCategory(e.target.value)} className='w-full px-3 py-2'>
             <option value="Men">Men</option>
@@ -116,10 +116,47 @@ const Add = ({ token }) => {
             <option value="Bottomwear">Bottomwear</option>
             <option value="Winterwear">Winterwear</option>
           </select>
+        </div> */}
+
+
+        {/* NEW CATEGORIES */}
+
+        <div>
+          <p className='mb-2'>Product Category</p>
+          <select onChange={(e) => setCategory(e.target.value)} className='w-full px-3 py-2'>
+            <option value="Select Category">Select Category</option>
+            <option value="Fruits & Vegetables">Fruits & Vegetables</option>
+            <option value="Dairy & Eggs">Dairy & Eggs</option>
+            <option value="Beverages">Beverages</option>
+            <option value="Bakery & Snacks">Bakery & Snacks</option>
+            <option value="Household Items">Household Items</option>
+          </select>
         </div>
 
         <div>
-          <p className='mb-2'>Product Prize</p>
+          <p className='mb-2'>Sub Category</p>
+          <select onChange={(e) => setSubCategory(e.target.value)} className='w-full px-3 py-2'>
+            <option value="Select SubCategory">Select SubCategory</option>
+            <option value="Fresh Fruits">Fresh Fruits</option>
+            <option value="Fresh Vegetables">Fresh Vegetables</option>
+            <option value="Milk">Milk</option>
+            <option value="Cheese">Cheese</option>
+            <option value="Soft Drinks">Soft Drinks</option>
+            <option value="Eggs">Eggs</option>
+            <option value="Juices">Juices</option>
+            <option value="Bread">Bread</option>
+            <option value="Biscuits">Biscuits</option>
+            <option value="Cleaning Supplies">Cleaning Supplies</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+
+
+
+
+        <div>
+          <p className='mb-2'>Prize per Kg</p>
           <input onChange={(e) => setPrice(e.target.value)} value={price} className='w-full px-3 py-2 sm:w-[120px]' type='Number' placeholder='25' />
         </div>
 
@@ -131,52 +168,52 @@ const Add = ({ token }) => {
         <div className='flex gap-3'>
 
           <div onClick={() => setSizes(prev =>
-            prev.includes("S")
-              ? prev.filter(item => item !== "S")
-              : [...prev, "S"]
+            prev.includes("100g")
+              ? prev.filter(item => item !== "100g")
+              : [...prev, "100g"]
           )}>
-            <p className={`${sizes.includes("S") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>
-              S
+            <p className={`${sizes.includes("100g") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>
+              100g
             </p>
           </div>
 
           <div onClick={() => setSizes(prev =>
-            prev.includes("M")
-              ? prev.filter(item => item !== "M")
-              : [...prev, "M"]
+            prev.includes("250g")
+              ? prev.filter(item => item !== "250g")
+              : [...prev, "250g"]
           )}>
-            <p className={`${sizes.includes("M") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>
-              M
+            <p className={`${sizes.includes("250g") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>
+              250g
             </p>
           </div>
 
           <div onClick={() => setSizes(prev =>
-            prev.includes("L")
-              ? prev.filter(item => item !== "L")
-              : [...prev, "L"]
+            prev.includes("500g")
+              ? prev.fiter(item => item !== "500g")
+              : [...prev, "500g"]
           )}>
-            <p className={`${sizes.includes("L") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>
-              L
+            <p className={`${sizes.includes("500g") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>
+              500g
             </p>
           </div>
 
           <div onClick={() => setSizes(prev =>
-            prev.includes("XL")
-              ? prev.filter(item => item !== "XL")
-              : [...prev, "XL"]
+            prev.includes("1Kg")
+              ? prev.filter(item => item !== "1Kg")
+              : [...prev, "1Kg"]
           )}>
-            <p className={`${sizes.includes("XL") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>
-              XL
+            <p className={`${sizes.includes("1Kg") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>
+              1Kg
             </p>
           </div>
 
           <div onClick={() => setSizes(prev =>
-            prev.includes("XXL")
-              ? prev.filter(item => item !== "XXL")
-              : [...prev, "XXL"]  // Add "XXL" if not present
+            prev.includes("5Kg")
+              ? prev.filter(item => item !== "5Kg")
+              : [...prev, "5Kg"]  // Add "5Kg" if not present
           )}>
-            <p className={`${sizes.includes("XXL") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>
-              XXL
+            <p className={`${sizes.includes("5Kg") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>
+              5Kg
             </p>
           </div>
 
