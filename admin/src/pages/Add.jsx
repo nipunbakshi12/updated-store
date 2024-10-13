@@ -64,6 +64,14 @@ const Add = ({ token }) => {
 
 
   return (
+<<<<<<< HEAD
+    <div>
+      hello
+      <h1>How are you</h1>
+      <h2>im fine bhen k lode </h2>
+      <h3>helloo</h3>
+    </div>
+=======
     <form onSubmit={onSubmitHandler} className='flex flex-col w-full items-start gap-3'>
 
       <div>
@@ -229,6 +237,7 @@ const Add = ({ token }) => {
         ADD
       </button>
     </form>
+>>>>>>> cdec9a1638032eeb90620695cc46592083eea434
   )
 }
 
