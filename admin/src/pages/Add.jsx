@@ -16,7 +16,7 @@ const Add = ({ token }) => {
   const [category, setCategory] = useState("Men")
   const [subCategory, setSubCategory] = useState("Topwear")
   const [bestseller, setBestseller] = useState(false)
-  const [sizes, setSizes] = useState([])
+  // const [sizes, setSizes] = useState([])
 
   const onSubmitHandler = async (e) => {
     e.preventDefault()
@@ -28,7 +28,7 @@ const Add = ({ token }) => {
       formData.append('category', category)
       formData.append('subCategory', subCategory)
       formData.append('bestseller', bestseller)
-      formData.append('sizes', JSON.stringify(sizes))
+      // formData.append('sizes', JSON.stringify(sizes))
 
       image1 && formData.append("image1", image1)
       image2 && formData.append("image2", image2)
@@ -46,7 +46,7 @@ const Add = ({ token }) => {
         setCategory("Men")
         setSubCategory("Topwear")
         setBestseller(false)
-        setSizes([])
+        // setSizes([])
         setImage1(false)
         setImage2(false)
         setImage3(false)
@@ -162,7 +162,7 @@ const Add = ({ token }) => {
 
       </div>
 
-      <div>
+      {/* <div>
         <p className='mb-2'>Product Sizes</p>
 
         <div className='flex gap-3'>
@@ -218,7 +218,7 @@ const Add = ({ token }) => {
           </div>
 
         </div>
-      </div>
+      </div> */}
 
       <div className='flex gap-2 mt-2'>
         <input onChange={() => setBestseller(prev => !prev)} checked={bestseller} type='checkbox' id='bestseller' />

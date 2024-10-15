@@ -57,19 +57,75 @@ const PlaceOrder = () => {
         rzp.open()
     }
 
+    // const onSubmitHandler = async (e) => {
+    //     e.preventDefault()
+    //     try {
+    //         let orderItems = []
+    //         for (const items in cartItems) {
+    //             for (const item in cartItems[items]) {
+    //                 if (cartItems[items][item] > 0) {
+    //                     const itemInfo = structuredClone(products.find(product => product._id === items))
+    //                     if (itemInfo) {
+    //                         itemInfo.size = item
+    //                         itemInfo.quantity = cartItems[items][item]
+    //                         orderItems.push(itemInfo)
+    //                     }
+    //                 }
+    //             }
+    //         }
+
+    //         let orderData = {
+    //             address: formData,
+    //             items: orderItems,
+    //             amount: getCartAmount() + delivery_fee
+    //         }
+
+    //         switch (method) {
+    //             //API CALLS FOR COD
+    //             case 'cod':
+    //                 const response = await axios.post(backendUrl + '/api/order/place', orderData, { headers: { token } })
+    //                 // console.log(response, "apires")
+    //                 if (response.data.success) {
+    //                     setCartItems({})
+    //                     navigate('/orders')
+    //                 }
+    //                 else {
+    //                     toast.error(response.data.message)
+    //                 }
+    //                 break;
+
+    //             case 'razorpay':
+    //                 const responseRazorpay = await axios.post(backendUrl + '/api/order/razorpay', orderData, { headers: { token } })
+    //                 if (responseRazorpay.data.success) {
+    //                     // console.log(responseRazorpay.data.order)
+    //                     initPay(responseRazorpay.data.order);
+    //                 }
+    //                 break;
+
+    //             default:
+    //                 break;
+
+    //         }
+
+    //         console.log('Order Items:', orderItems)
+    //     } catch (error) {
+    //         console.log(error)
+    //         toast.error('Failed to place order')
+    //     }
+
+    // }
+
     const onSubmitHandler = async (e) => {
         e.preventDefault()
         try {
             let orderItems = []
             for (const items in cartItems) {
-                for (const item in cartItems[items]) {
-                    if (cartItems[items][item] > 0) {
-                        const itemInfo = structuredClone(products.find(product => product._id === items))
-                        if (itemInfo) {
-                            itemInfo.size = item
-                            itemInfo.quantity = cartItems[items][item]
-                            orderItems.push(itemInfo)
-                        }
+
+                if (cartItems[items] > 0) {
+                    const itemInfo = structuredClone(products.find(product => product._id === items))
+                    if (itemInfo) {
+                        itemInfo.quantity = cartItems[items]
+                        orderItems.push(itemInfo)
                     }
                 }
             }

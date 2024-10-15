@@ -19,23 +19,55 @@ const ShopContextProvider = (props) => {
 
     console.log(backendUrl)
 
-    const addToCart = async (itemId, size) => {
-        if (!size) {
-            toast.error("Select product size")
-            return
-        }
+    // const addToCart = async (itemId, size) => {
+
+    //     if (!size) {
+    //         toast.error("Select product size")
+    //         return
+    //     }
+    //     let cartData = structuredClone(cartItems)
+    //     if (cartData[itemId]) {
+    //         if (cartData[itemId][size]) {
+    //             cartData[itemId][size] += 1
+    //         }
+    //         else {
+    //             cartData[itemId][size] = 1
+    //         }
+    //     }
+    //     else {
+    //         cartData[itemId] = {}
+    //         cartData[itemId][size] = 1
+    //     }
+    //     setCartItems(cartData)
+
+    //     // toast.success("Product added to cart!");
+
+    //     if (token) {
+    //         try {
+    //             await axios.post(backendUrl + '/api/cart/add', { itemId, size }, { headers: { token } })
+    //         } catch (error) {
+    //             console.log(error)
+    //             toast.error('Error adding product to cart')
+    //         }
+    //     }
+
+    // }
+
+    //Prizes ka karna hai
+
+    const addToCart = async (itemId) => {
         let cartData = structuredClone(cartItems)
         if (cartData[itemId]) {
-            if (cartData[itemId][size]) {
-                cartData[itemId][size] += 1
+            if (cartData[itemId]) {
+                cartData[itemId] += 1
             }
             else {
-                cartData[itemId][size] = 1
+                cartData[itemId] = 1
             }
         }
         else {
             cartData[itemId] = {}
-            cartData[itemId][size] = 1
+            cartData[itemId] = 1
         }
         setCartItems(cartData)
 
@@ -43,7 +75,7 @@ const ShopContextProvider = (props) => {
 
         if (token) {
             try {
-                await axios.post(backendUrl + '/api/cart/add', { itemId, size }, { headers: { token } })
+                await axios.post(backendUrl + '/api/cart/add', { itemId }, { headers: { token } })
             } catch (error) {
                 console.log(error)
                 toast.error('Error adding product to cart')
@@ -52,35 +84,64 @@ const ShopContextProvider = (props) => {
 
     }
 
-    //Prizes ka karna hai
-    const getCartCount = () => {
-        let totalCount = 0
-        for (const items in cartItems) {
-            for (const item in cartItems[items]) {
-                try {
-                    if (cartItems[items][item] > 0) {
-                        totalCount += cartItems[items][item]
-                    }
-                } catch (error) {
-                    console.log(error)
-                    toast.error('Error calculating cart count')
-                }
-            }
-        }
-        return totalCount
-    }
+    // const getCartCount = () => {
+    //     let totalCount = 0
+    //     for (const items in cartItems) {
+    //         for (const item in cartItems[items]) {
+    //             try {
+    //                 if (cartItems[items][item] > 0) {
+    //                     totalCount += cartItems[items][item]
+    //                 }
+    //             } catch (error) {
+    //                 console.log(error)
+    //                 toast.error('Error calculating cart count')
+    //             }
+    //         }
+    //     }
+    //     return totalCount
+    // }
 
     // useEffect(() => {
     //     console.log(cartItems)
     // }, [cartItems])
 
-    const updateQuantity = async (itemId, size, quantity) => {
+    const getCartCount = () => {
+        let totalCount = 0
+        for (const items in cartItems) {
+
+            try {
+                if (cartItems[items] > 0) {
+                    totalCount += cartItems[items]
+                }
+            } catch (error) {
+                console.log(error)
+                toast.error('Error calculating cart count')
+            }
+        }
+        return totalCount
+    }
+
+    // const updateQuantity = async (itemId, size, quantity) => {
+    //     let cartData = structuredClone(cartItems)
+    //     cartData[itemId][size] = quantity;
+    //     setCartItems(cartData)
+    //     if (token) {
+    //         try {
+    //             await axios.post(backendUrl + '/api/cart/update', { itemId, size, quantity }, { headers: { token } })
+    //         } catch (error) {
+    //             console.log(error)
+    //             toast.error('Error updating cart')
+    //         }
+    //     }
+    // }
+
+    const updateQuantity = async (itemId, quantity) => {
         let cartData = structuredClone(cartItems)
-        cartData[itemId][size] = quantity;
+        cartData[itemId] = quantity;
         setCartItems(cartData)
         if (token) {
             try {
-                await axios.post(backendUrl + '/api/cart/update', { itemId, size, quantity }, { headers: { token } })
+                await axios.post(backendUrl + '/api/cart/update', { itemId, quantity }, { headers: { token } })
             } catch (error) {
                 console.log(error)
                 toast.error('Error updating cart')
@@ -88,20 +149,38 @@ const ShopContextProvider = (props) => {
         }
     }
 
+    // const getCartAmount = () => {
+    //     let totalAmount = 0
+    //     for (const items in cartItems) {
+    //         let itemInfo = products.find((product) => product._id === items)
+    //         console.log(itemInfo, "ITEM INFO")
+    //         for (const item in cartItems[items]) {
+    //             try {
+    //                 if (cartItems[items][item] > 0) {
+    //                     totalAmount += cartItems[items][item] * itemInfo.price
+    //                 }
+    //             }
+    //             catch (error) {
+    //                 toast.error('Error calculating cart amount')
+    //             }
+    //         }
+    //     }
+    //     return totalAmount
+    // }
+
     const getCartAmount = () => {
         let totalAmount = 0
         for (const items in cartItems) {
             let itemInfo = products.find((product) => product._id === items)
             console.log(itemInfo, "ITEM INFO")
-            for (const item in cartItems[items]) {
-                try {
-                    if (cartItems[items][item] > 0) {
-                        totalAmount += cartItems[items][item] * itemInfo.price
-                    }
+
+            try {
+                if (cartItems[items] > 0) {
+                    totalAmount += cartItems[items] * itemInfo.price
                 }
-                catch (error) {
-                    toast.error('Error calculating cart amount')
-                }
+            }
+            catch (error) {
+                toast.error('Error calculating cart amount')
             }
         }
         return totalAmount

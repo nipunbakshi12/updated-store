@@ -24,10 +24,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    sizes: {
-        type: Array,
-        required: true
-    },
+    // sizes: {
+    //     type: Array,
+    //     required: true
+    // },
     bestseller: {
         type: Boolean,
     },

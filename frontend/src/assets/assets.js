@@ -57,6 +57,7 @@ import p_img52 from './p_img52.png'
 
 import logo1 from './shipshop.jpeg'
 import logo from './logo.png'
+import logo3 from './logo3.png'
 import hero_img from './hero_img.png'
 import cart_icon from './cart_icon.png'
 import bin_icon from './bin_icon.png'
@@ -79,6 +80,7 @@ import groceries from './Groceries.jpg'
 export const assets = {
     groceries,
     logo1,
+    logo3,
     logo,
     hero_img,
     cart_icon,
