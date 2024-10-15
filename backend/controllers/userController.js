@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 
 //create token
 const createToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET)
+    return jwt.sign({ id }, 'shipshop')
 }
 
 // Route for User Login
@@ -101,7 +101,7 @@ const adminLogin = async (req, res) => {
     try {
         const { email, password } = req.body
         if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
-            const token = jwt.sign(email + password, process.env.JWT_SECRET)
+            const token = jwt.sign(email + password, 'shipshop')
             res.json({
                 success: true,
                 message: "Admin Logged in successfully",

@@ -14,7 +14,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = 4000;
 connectDB()
 connectCloudinary()
 
