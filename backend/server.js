@@ -25,7 +25,7 @@ app.use(express.json());
 
 app.use(
     cors({
-        origin: ["https://shipshopstorefrontend.vercel.app"],
+        origin: "https://shipshopstorefrontend.vercel.app",
         methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],
     })
