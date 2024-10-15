@@ -8,8 +8,10 @@ import productRouter from './routes/productRoute.js';
 import cartRouter from './routes/cartRoute.js';
 import orderRouter from './routes/orderRoute.js';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv'
 
 //App Config
+dotenv.config()
 
 const app = express();
 const port = process.env.PORT || 4000;
