@@ -53,7 +53,7 @@ const Navbar = () => {
                             <img
                                 onClick={() => (token ? null : navigate("/login"))}
                                 src={assets.profile_icon}
-                                className="w-5 cursor-pinter px-2"
+                                className="w-5 cursor-pinter"
                             />
                         </>
                     ) : (
