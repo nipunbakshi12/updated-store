@@ -44,7 +44,7 @@ const Navbar = () => {
                 </NavLink>
             </ul>
 
-            <div className='flex items-center gap-6 sm:gap-2'>
+            <div className='flex items-center gap-6 sm:gap-3 sm:px-2'>
                 <img src={assets.search_icon} className='w-5 cursor-pointer' onClick={() => setShowSearch(true)} />
 
                 <div className='group relative'>
