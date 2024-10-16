@@ -204,7 +204,7 @@ const ShopContextProvider = (props) => {
 
     const getUserCart = async (token) => {
         try {
-            const response = await axios.post('https://shipshopstorebackend.vercel.app' + '/api/cart/get', {}, { headers: { token } })
+            const response = await axios.post(backendUrl + '/api/cart/get', {}, { headers: { token } })
             if (response.data.success) {
                 setCartItems(response.data.cartData)
             }
