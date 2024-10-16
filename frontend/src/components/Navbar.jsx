@@ -53,11 +53,11 @@ const Navbar = () => {
                             <img
                                 onClick={() => (token ? null : navigate("/login"))}
                                 src={assets.profile_icon}
-                                className="w-5 cursor-pinter"
+                                className="w-5 cursor-pinter px-2"
                             />
                         </>
                     ) : (
-                        <button className='flex items-center justify-center mt-1 px-3 py-3 rounded-xl bg-white hover:bg-gray-100'>
+                        <button className='flex items-center justify-center mt-1 px-4 py-3 rounded-xl bg-white hover:bg-gray-100'>
                             <Link to="/login" className="flex items-center justify-center">
                                 <CiLogin className='w-7 h-7' style={{ color: '#404040' }} />
                             </Link>
