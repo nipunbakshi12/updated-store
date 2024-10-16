@@ -10,7 +10,7 @@ const About = () => {
                 <Title text1={'ABOUT'} text2={' US'} />
             </div>
             <div className='my-10 flex flex-col md:flex-row gap-16'>
-                <img src={assets.about_img} className='w-full md:max-w-[450px]' />
+                <img src={assets.about2} className='w-full md:max-w-[450px]' />
                 <div className='flex flex-col justify-center gap-6 md:w-2/4 text-gray-600'>
                     <p>Welcome to ShipShopStore, your trusted partner for fresh and quality groceries delivered right to your doorstep. We started with a simple goal: to provide busy households with easy access to premium, handpicked groceries, all while ensuring convenience, affordability, and sustainability.<br /><br />
                         At ShipShopStore, we understand the importance of fresh, nutritious food in every home. That’s why we go the extra mile to source the finest fruits, vegetables, dairy products, pantry staples, and more. Our team works directly with farmers and trusted suppliers to ensure that every product you receive meets the highest standards of quality and freshness.<br /><br /></p>
