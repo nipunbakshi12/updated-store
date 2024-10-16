@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-// import 'dotenv/config'
+import 'dotenv/config'
 import connectCloudinary from './config/cloudinary.js';
 import connectDB from './config/db.js';
 import userRouter from './routes/userRoute.js';
@@ -8,28 +8,28 @@ import productRouter from './routes/productRoute.js';
 import cartRouter from './routes/cartRoute.js';
 import orderRouter from './routes/orderRoute.js';
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv'
+// import dotenv from 'dotenv'
 
 //App Config
-dotenv.config()
+// dotenv.config()
 
 const app = express();
-const port = 4000;
+const port = process.env.port || 4000;
 connectDB()
 connectCloudinary()
 
 //middleware configuration
 
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
-app.use(
-    cors({
-        origin: "https://shipshopstorefrontend.vercel.app",
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-    })
-);
+// app.use(
+//     cors({
+//         origin: "https://shipshopstorefrontend.vercel.app",
+//         methods: ["GET", "POST", "PUT", "DELETE"],
+//         allowedHeaders: ["Content-Type", "Authorization"],
+//     })
+// );
 
 //---------------------------------------api endpoints-------------------------------------
 //userController

@@ -9,7 +9,7 @@ import Login from "./components/Login.jsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://shipshopstorebackend.vercel.app'
+export const backendUrl = 'http://localhost:4000'
 export const currency = '₹'
 
 const App = () => {

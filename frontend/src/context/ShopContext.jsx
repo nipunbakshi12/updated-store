@@ -9,7 +9,7 @@ export const ShopContext = createContext()
 const ShopContextProvider = (props) => {
     const currency = '₹';
     const delivery_fee = 12;
-    const backendUrl = 'https://shipshopstorebackend.vercel.app'
+    const backendUrl = 'http://localhost:4000'
     const [search, setSearch] = useState('')
     const [showSearch, setShowSearch] = useState(false)
     const [cartItems, setCartItems] = useState({})
@@ -17,7 +17,7 @@ const ShopContextProvider = (props) => {
     const [products, setProducts] = useState([])
     const [token, setToken] = useState('')
 
-    console.log(backendUrl)
+    // console.log('https://shipshopstorebackend.vercel.app')
 
     // const addToCart = async (itemId, size) => {
 
@@ -44,7 +44,7 @@ const ShopContextProvider = (props) => {
 
     //     if (token) {
     //         try {
-    //             await axios.post(backendUrl + '/api/cart/add', { itemId, size }, { headers: { token } })
+    //             await axios.post('https://shipshopstorebackend.vercel.app' + '/api/cart/add', { itemId, size }, { headers: { token } })
     //         } catch (error) {
     //             console.log(error)
     //             toast.error('Error adding product to cart')
@@ -127,7 +127,7 @@ const ShopContextProvider = (props) => {
     //     setCartItems(cartData)
     //     if (token) {
     //         try {
-    //             await axios.post(backendUrl + '/api/cart/update', { itemId, size, quantity }, { headers: { token } })
+    //             await axios.post('https://shipshopstorebackend.vercel.app' + '/api/cart/update', { itemId, size, quantity }, { headers: { token } })
     //         } catch (error) {
     //             console.log(error)
     //             toast.error('Error updating cart')
@@ -204,7 +204,7 @@ const ShopContextProvider = (props) => {
 
     const getUserCart = async (token) => {
         try {
-            const response = await axios.post(backendUrl + '/api/cart/get', {}, { headers: { token } })
+            const response = await axios.post('https://shipshopstorebackend.vercel.app' + '/api/cart/get', {}, { headers: { token } })
             if (response.data.success) {
                 setCartItems(response.data.cartData)
             }
