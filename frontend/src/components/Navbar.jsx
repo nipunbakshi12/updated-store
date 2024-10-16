@@ -44,7 +44,7 @@ const Navbar = () => {
                 </NavLink>
             </ul>
 
-            <div className='flex items-center gap-6 sm:gap-2'>
+            <div className='flex items-center gap-6 sm:gap-0'>
                 <img src={assets.search_icon} className='w-5 cursor-pointer' onClick={() => setShowSearch(true)} />
 
                 <div className='group relative'>
@@ -57,7 +57,7 @@ const Navbar = () => {
                             />
                         </>
                     ) : (
-                        <button className='flex items-center justify-center mt-1 px-6 py-3 rounded-xl bg-white hover:bg-gray-100'>
+                        <button className='flex items-center justify-center mt-1 px-3 py-3 rounded-xl bg-white hover:bg-gray-100'>
                             <Link to="/login" className="flex items-center justify-center">
                                 <CiLogin className='w-7 h-7' style={{ color: '#404040' }} />
                             </Link>
